@@ -1,48 +1,75 @@
 ﻿Public Class Form1
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cmbBeverage.Items.AddRange(New String() {"Espresso", "Latte", "Cappuccino", "Americano", "Mocha"})
+    End Sub
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
-        Try
-            Dim customerName As String = txtCustomerName.Text
-            Dim beverage As String = cmbBeverage.SelectedItem.ToString()
-            Dim quantity As Integer = CInt(numQuantity.Value)
-            Dim applyDiscount As Boolean = chkDiscount.Checked
-            Dim price As Decimal = 0
-            Select Case beverage
-                Case "Espresso"
-                    price = 120
-                Case "Latte"
-                    price = 150
-                Case "Cappuccino"
-                    price = 160
-                Case "Americano"
-                    price = 130
-                Case "Mocha"
-                    price = 170
-            End Select
-            Dim subtotal As Decimal = price * quantity
-            Dim discountAmount As Decimal = 0
-            If applyDiscount Then
-                discountAmount = subtotal * 0.1
-            End If
-            Dim finalTotal As Decimal = subtotal - discountAmount
+        Dim customerName As String
+        Dim beveragePrice As Decimal
+        Dim quantity As Integer
+        Dim subtotal As Decimal
+        Dim discount As Decimal
+        Dim finalTotal As Decimal
 
-            lblSubtotal.Text = subtotal.ToString() & "PHP"
-            lblDiscount.Text = discountAmount.ToString() & "PHP"
-            lblFinalTotalValue.Text = finalTotal.ToString() & "PHP"
-        Catch ex As Exception
-            MessageBox.Show("Please check your inputs and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
-    Private Sub btnPlaceOrder_Click(sender As Object, e As EventArgs) Handles btnPlaceOrder.Click
-        If String.IsNullOrEmpty(txtCustomerName.Text) Then
-            MessageBox.Show("Please enter customer name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+
+        customerName = txtCustomerName.Text.Trim()
+        If String.IsNullOrEmpty(customerName) Then
+            MessageBox.Show("Please enter the customer's name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
         End If
+
         If cmbBeverage.SelectedIndex = -1 Then
-            MessageBox.Show("Please select a beverage", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            MessageBox.Show("Please select a beverage.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
         End If
-        MessageBox.Show($"Order for {txtCustomerName.Text} placed successfully! Total: {lblFinalTotalValue.Text}",
-                        "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+        Try
+            quantity = CInt(numQuantity.Value)
+            If quantity <= 0 Then
+                MessageBox.Show("Quantity must be a positive number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Invalid quantity input.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End Try
+
+
+
+        Select Case cmbBeverage.SelectedItem.ToString()
+            Case "Espresso"
+                beveragePrice = 120
+            Case "Latte"
+                beveragePrice = 150
+            Case "Cappuccino"
+                beveragePrice = 160
+            Case "Americano"
+                beveragePrice = 130
+            Case "Mocha"
+                beveragePrice = 170
+        End Select
+
+
+        subtotal = beveragePrice * quantity
+        lblSubtotal.Text = "Total: " + subtotal.ToString()
+
+
+        If chkDiscount.Checked Then
+            discount = subtotal * 0.1
+            lblDiscount.Text = "Discount: " + discount.ToString()
+        Else
+            lblDiscount.Text = "No Discount: ₱0.00"
+        End If
+
+
+        finalTotal = subtotal - discount
+        lblFinalTotal.Text = "Final Total: " + finalTotal.ToString()
+
+
+        Dim summary As String = $"Order for {customerName} submitted. Final Total: {finalTotal.ToString("")}"
+        MessageBox.Show(summary, "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+
 End Class

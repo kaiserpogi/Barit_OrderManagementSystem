@@ -25,14 +25,11 @@ Partial Class Form1
         Me.txtCustomerName = New System.Windows.Forms.TextBox()
         Me.cmbBeverage = New System.Windows.Forms.ComboBox()
         Me.numQuantity = New System.Windows.Forms.NumericUpDown()
-        Me.btnPlaceOrder = New System.Windows.Forms.Button()
         Me.lblCustomerName = New System.Windows.Forms.Label()
         Me.lblBeverage = New System.Windows.Forms.Label()
         Me.chkDiscount = New System.Windows.Forms.CheckBox()
         Me.lblQuantity = New System.Windows.Forms.Label()
-        Me.lblSubtotalValue = New System.Windows.Forms.Label()
         Me.lblDiscount = New System.Windows.Forms.Label()
-        Me.lblFinalTotalValue = New System.Windows.Forms.Label()
         Me.lblSubtotal = New System.Windows.Forms.Label()
         Me.lblFinalTotal = New System.Windows.Forms.Label()
         Me.lblDiscountValue = New System.Windows.Forms.Label()
@@ -50,7 +47,6 @@ Partial Class Form1
         'cmbBeverage
         '
         Me.cmbBeverage.FormattingEnabled = True
-        Me.cmbBeverage.Items.AddRange(New Object() {"Espresso", "Latte", "Cappuccino", "Americano", "Mocha"})
         Me.cmbBeverage.Location = New System.Drawing.Point(208, 151)
         Me.cmbBeverage.Name = "cmbBeverage"
         Me.cmbBeverage.Size = New System.Drawing.Size(121, 21)
@@ -62,15 +58,6 @@ Partial Class Form1
         Me.numQuantity.Name = "numQuantity"
         Me.numQuantity.Size = New System.Drawing.Size(120, 20)
         Me.numQuantity.TabIndex = 2
-        '
-        'btnPlaceOrder
-        '
-        Me.btnPlaceOrder.Location = New System.Drawing.Point(209, 312)
-        Me.btnPlaceOrder.Name = "btnPlaceOrder"
-        Me.btnPlaceOrder.Size = New System.Drawing.Size(120, 23)
-        Me.btnPlaceOrder.TabIndex = 3
-        Me.btnPlaceOrder.Text = "Place Order"
-        Me.btnPlaceOrder.UseVisualStyleBackColor = True
         '
         'lblCustomerName
         '
@@ -109,15 +96,6 @@ Partial Class Form1
         Me.lblQuantity.TabIndex = 7
         Me.lblQuantity.Text = "Quantity:"
         '
-        'lblSubtotalValue
-        '
-        Me.lblSubtotalValue.AutoSize = True
-        Me.lblSubtotalValue.Location = New System.Drawing.Point(208, 218)
-        Me.lblSubtotalValue.Name = "lblSubtotalValue"
-        Me.lblSubtotalValue.Size = New System.Drawing.Size(76, 13)
-        Me.lblSubtotalValue.TabIndex = 8
-        Me.lblSubtotalValue.Text = "Subtotal Value"
-        '
         'lblDiscount
         '
         Me.lblDiscount.AutoSize = True
@@ -127,19 +105,10 @@ Partial Class Form1
         Me.lblDiscount.TabIndex = 9
         Me.lblDiscount.Text = "Discount:"
         '
-        'lblFinalTotalValue
-        '
-        Me.lblFinalTotalValue.AutoSize = True
-        Me.lblFinalTotalValue.Location = New System.Drawing.Point(208, 266)
-        Me.lblFinalTotalValue.Name = "lblFinalTotalValue"
-        Me.lblFinalTotalValue.Size = New System.Drawing.Size(62, 13)
-        Me.lblFinalTotalValue.TabIndex = 10
-        Me.lblFinalTotalValue.Text = "Final Value "
-        '
         'lblSubtotal
         '
         Me.lblSubtotal.AutoSize = True
-        Me.lblSubtotal.Location = New System.Drawing.Point(108, 218)
+        Me.lblSubtotal.Location = New System.Drawing.Point(206, 214)
         Me.lblSubtotal.Name = "lblSubtotal"
         Me.lblSubtotal.Size = New System.Drawing.Size(49, 13)
         Me.lblSubtotal.TabIndex = 11
@@ -148,7 +117,7 @@ Partial Class Form1
         'lblFinalTotal
         '
         Me.lblFinalTotal.AutoSize = True
-        Me.lblFinalTotal.Location = New System.Drawing.Point(108, 266)
+        Me.lblFinalTotal.Location = New System.Drawing.Point(205, 267)
         Me.lblFinalTotal.Name = "lblFinalTotal"
         Me.lblFinalTotal.Size = New System.Drawing.Size(62, 13)
         Me.lblFinalTotal.TabIndex = 12
@@ -169,7 +138,7 @@ Partial Class Form1
         Me.btnCalculate.Name = "btnCalculate"
         Me.btnCalculate.Size = New System.Drawing.Size(75, 23)
         Me.btnCalculate.TabIndex = 14
-        Me.btnCalculate.Text = "Calculate"
+        Me.btnCalculate.Text = "Place Order"
         Me.btnCalculate.UseVisualStyleBackColor = True
         '
         'Form1
@@ -181,14 +150,11 @@ Partial Class Form1
         Me.Controls.Add(Me.lblDiscountValue)
         Me.Controls.Add(Me.lblFinalTotal)
         Me.Controls.Add(Me.lblSubtotal)
-        Me.Controls.Add(Me.lblFinalTotalValue)
         Me.Controls.Add(Me.lblDiscount)
-        Me.Controls.Add(Me.lblSubtotalValue)
         Me.Controls.Add(Me.lblQuantity)
         Me.Controls.Add(Me.chkDiscount)
         Me.Controls.Add(Me.lblBeverage)
         Me.Controls.Add(Me.lblCustomerName)
-        Me.Controls.Add(Me.btnPlaceOrder)
         Me.Controls.Add(Me.numQuantity)
         Me.Controls.Add(Me.cmbBeverage)
         Me.Controls.Add(Me.txtCustomerName)
@@ -203,14 +169,11 @@ Partial Class Form1
     Friend WithEvents txtCustomerName As TextBox
     Friend WithEvents cmbBeverage As ComboBox
     Friend WithEvents numQuantity As NumericUpDown
-    Friend WithEvents btnPlaceOrder As Button
     Friend WithEvents lblCustomerName As Label
     Friend WithEvents lblBeverage As Label
     Friend WithEvents chkDiscount As CheckBox
     Friend WithEvents lblQuantity As Label
-    Friend WithEvents lblSubtotalValue As Label
     Friend WithEvents lblDiscount As Label
-    Friend WithEvents lblFinalTotalValue As Label
     Friend WithEvents lblSubtotal As Label
     Friend WithEvents lblFinalTotal As Label
     Friend WithEvents lblDiscountValue As Label
