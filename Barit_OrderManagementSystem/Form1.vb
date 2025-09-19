@@ -25,9 +25,9 @@
             End If
             Dim finalTotal As Decimal = subtotal - discountAmount
 
-            lblSubtotal.Text = subtotal.ToString()("N2") & "PHP"
-            lblDiscount.Text = discountAmount.ToString()("N2") & "PHP"
-            lblFinalTotalValue.Text = finalTotal.ToString()("N2") & "PHP"
+            lblSubtotal.Text = subtotal.ToString() & "PHP"
+            lblDiscount.Text = discountAmount.ToString() & "PHP"
+            lblFinalTotalValue.Text = finalTotal.ToString() & "PHP"
         Catch ex As Exception
             MessageBox.Show("Please check your inputs and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
