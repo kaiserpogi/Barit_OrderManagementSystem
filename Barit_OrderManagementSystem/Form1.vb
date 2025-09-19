@@ -66,7 +66,6 @@
         finalTotal = subtotal - discount
         lblFinalTotal.Text = "Final Total: " + finalTotal.ToString()
 
-
         Dim summary As String = $"Order for {customerName} submitted. Final Total: {finalTotal.ToString("")}"
         MessageBox.Show(summary, "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
